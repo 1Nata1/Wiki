@@ -1,0 +1,165 @@
+body {
+  background-image: url(Imagens/stardew-valley-2560-x-1440-background-gkvzx4cplgse4ymy.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  font-family: "Crimson Pro", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  background-color: rgba(37, 37, 32, 0.5);
+  width: 90%;
+  max-width: 1000px;
+  margin: 50px auto;
+  border: 2px solid green;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.container h1 {
+  color: white;
+  text-align: center;
+  border-bottom: 2px solid green;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  padding: 20px 0 10px;
+  font-size: 30px;
+}
+
+.container h2 {
+  color: white;
+  text-align: left;
+  border-top: 2px solid green;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  padding: 20px 0 10px;
+  font-size: 30px;
+}
+
+.Principal {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.Principal p {
+  line-height: 1.6;
+  flex: 1;
+  font-size: 18px;
+  color: white;
+  padding-left: 10px;
+  min-width: 250px;
+}
+
+#Amanda {
+  background-image: url(Imagens/Amanda.webp);
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  width: 250px;
+  border-radius: 10%;
+  border: 2px solid green;
+  flex-shrink: 0;
+}
+
+.social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-top: -20px;
+  width: 100%;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.social img {
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s, filter 0.3s;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.7));
+}
+
+.social img:hover {
+  transform: scale(1.2);
+  filter: brightness(1.2) drop-shadow(2px 2px 6px rgba(0, 255, 0, 0.8));
+  cursor: pointer;
+}
+
+.texto p {
+  font-size: 18px;
+  line-height: 1.6;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.texto li {
+  font-size: 18px;
+  line-height: 1.6;
+  color: white;
+}
+
+.texto a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
+
+.texto a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .Principal {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  #Amanda {
+    margin: 20px 0 0 0;
+    height: 200px;
+    width: 200px;
+  }
+
+  .social {
+    gap: 20px;
+  }
+
+  .container h1,
+  .container h2 {
+    font-size: 24px;
+  }
+
+  .Principal p {
+    padding: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  #Amanda {
+    height: 150px;
+    width: 150px;
+  }
+
+  .social img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .container {
+    padding: 15px;
+  }
+
+  .container h1,
+  .container h2 {
+    font-size: 20px;
+  }
+}
