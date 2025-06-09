@@ -8,14 +8,20 @@
       href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
+    <script src="index.js" defer></script>
     <title>Wiki</title>
   </head>
   <body>
     <div class="container">
-      <p>
-        <a href="#Curiosidades">Teste</a>
-      </p>
+      <div class="caixa">
       <h1><b>WendyJr_</b></h1>
+      <ul>
+        <li><a href="#Wendy">Wendy</li></a>
+        <li><a href="#Feitos">Feitos</li></a>
+        <li><a href="#Curiosidades">Curiosidades</li></a>
+        <li><a href="#Galeria">Galeria</li></a>
+      </ul>
+      </div>
       <div class="Principal">
         <p>
           Amanda Japiassú mais conhecida como Wendyjr_ ou caloteira tem 20 anos
@@ -36,10 +42,13 @@
           <a href="https://www.twitch.tv/wendyjr_" target="_blank">
             <img src="Imagens/twitch.png" alt="twitch"
           /></a>
+          <a href="https://x.com/WendyJr_?t=iYJLyfo1XXSEhfTgvDszNA&s=09" target="_blank">
+            <img src="Imagens/Twitter.png" alt="twitter"
+          /></a>
         </div>
       </div>
       <div class="texto">
-        <h2>Feitos</h2>
+        <h2 id="Feitos">Feitos</h2>
         <!-- Stardew Valley -->
         <p>
           <b>Stardew Valley</b>: Conseguiu o Primeiro Lugar na Speedrun de
@@ -99,7 +108,38 @@
           <li>Ela tem todas as alergias</li>
           <li>Faz pilates com a sua Mâe</li>
         </ul>
+        <h2 id="Galeria">Galeria</h2>
+        <div class="galeria">
+          <figure class="galeria-item">
+            <img src="Imagens/F7.jfif" alt="Foto">
+          </figure>
+          <figure class="galeria-item">
+            <img src="Imagens/F1.webp" alt="Foto">
+          </figure>
+          <figure class="galeria-item">
+            <img src="Imagens/F2.webp" alt="Foto">
+          </figure>
+          <figure class="galeria-item">
+            <img src="Imagens/F3.webp" alt="Foto">
+          </figure>
+          <figure class="galeria-item">
+            <img src="Imagens/F4.webp" alt="Foto">
+          </figure>
+          <figure class="galeria-item">
+            <img src="Imagens/F5.webp" alt="Foto">
+          </figure>
+          <figure class="galeria-item">
+            <img src="Imagens/F8.webp" alt="Foto">
+          </figure>
+          <figure class="galeria-item">
+            <img src="Imagens/F9.webp" alt="Foto">
+          </figure>
+        </div>
       </div>
+    </div>
+    <div id="lightbox" class="lightbox-overlay">
+      <span class="lightbox-close">&times;</span>
+      <img id="lightbox-imagem" class="lightbox-content" alt="imagem em tela cheia">
     </div>
   </body>
 </html>
