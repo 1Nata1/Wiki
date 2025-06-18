@@ -2,6 +2,7 @@ body {
   background-image: url(Imagens/stardew-valley-2560-x-1440-background-gkvzx4cplgse4ymy.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
+  background-size: cover;
   margin: 0;
   padding: 0;
   font-family: "Crimson Pro", serif;
