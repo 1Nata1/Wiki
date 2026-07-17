@@ -110,6 +110,18 @@ body::before {
   font-size: 22px;
 }
 
+.mod-btn-icon {
+  font-size: 18px;
+  color: #ffc107;
+  margin-left: 4px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.mod-btn-icon:hover {
+  color: #ffd54f;
+}
+
 .user-btn .user-name {
   max-width: 120px;
   overflow: hidden;

@@ -29,9 +29,7 @@
           <a href="perfil.html" class="user-btn" title="Meu Perfil">
             <i class="bx bxs-user-circle"></i>
             <span class="user-name" id="headerUserName"></span>
-          </a>
-          <a href="moderacao.html" class="user-btn mod-btn" title="Moderação" id="modBtn" style="display:none;">
-            <i class="bx bxs-shield"></i>
+            <i class="bx bxs-shield mod-btn-icon" id="modIcon" style="display:none;" title="Moderação"></i>
           </a>
         </div>
         <ul>
@@ -379,9 +377,13 @@
         renderizarComentarios();
 
         // Mostra botão de moderação pra moderadores
-        const modBtn = document.getElementById("modBtn");
-        if (modBtn && user && isModerador(user)) {
-          modBtn.style.display = "flex";
+        const modIcon = document.getElementById("modIcon");
+        if (modIcon && user && isModerador(user)) {
+          modIcon.style.display = "inline";
+          modIcon.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.location.href = "moderacao.html";
+          });
         }
       });
     </script>
