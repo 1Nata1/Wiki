@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="Style.css?v=2" />
     <link
       href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&display=swap"
@@ -11,7 +15,7 @@
     <script src="index.js?v=2" defer></script>
     <title>Wiki - WendyJr_</title>
     <script>
-      // Verifica se está logado (vindo do Login)
+      // Verifica se está logado
       const logado = localStorage.getItem("wikiLogado") || sessionStorage.getItem("wikiLogado");
       if (!logado) {
         window.location.href = "https://1Nata1.github.io/Login/";
@@ -20,14 +24,20 @@
   </head>
   <body>
     <div class="container">
-      <div class="caixa">
+    <div class="header-bar">
+      <div class="header-top">
         <h1><b>WendyJr_</b></h1>
-        <ul>
-          <li><a href="#Feitos">Feitos</a></li>
-          <li><a href="#Curiosidades">Curiosidades</a></li>
-          <li><a href="#Galeria">Galeria</a></li>
-        </ul>
+        <a href="perfil.html" class="user-btn" title="Meu Perfil">
+          <i class="bx bxs-user-circle"></i>
+          <span class="user-name" id="headerUserName"></span>
+        </a>
       </div>
+      <ul>
+        <li><a href="#Feitos">Feitos</a></li>
+        <li><a href="#Curiosidades">Curiosidades</a></li>
+        <li><a href="#Galeria">Galeria</a></li>
+      </ul>
+    </div>
 
       <div class="Principal">
         <p>
@@ -140,11 +150,20 @@
           </figure>
         </div>
       </div>
-    </div>
+      </div>
 
-    <div id="lightbox" class="lightbox-overlay">
+      <div id="lightbox" class="lightbox-overlay">
       <span class="lightbox-close">&times;</span>
       <img id="lightbox-imagem" class="lightbox-content" alt="imagem em tela cheia">
-    </div>
-  </body>
-</html>
+      </div>
+
+      <script>
+      // Preenche o nome do usuário no cabecalho
+      const userName = localStorage.getItem("wikiUsuarioNome") || sessionStorage.getItem("wikiUsuarioNome") || localStorage.getItem("wikiUsuario") || sessionStorage.getItem("wikiUsuario");
+      const nameSpan = document.getElementById("headerUserName");
+      if (nameSpan && userName) {
+        nameSpan.textContent = userName;
+      }
+      </script>
+      </body>
+      </html>

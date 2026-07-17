@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Style.css?v=2" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Meu Perfil - Wiki</title>
+    <style>
+      /* Sobrescreve o container da Wiki para um tamanho menor */
+      .container.perfil-container {
+        max-width: 520px;
+      }
+
+      .perfil-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #43a047, #2e7d32);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        font-size: 40px;
+        color: white;
+        font-weight: 700;
+        font-family: "Crimson Pro", serif;
+        border: 3px solid rgba(76, 175, 80, 0.6);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      }
+
+      .perfil-campo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 14px 18px;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        margin-bottom: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .perfil-campo i {
+        font-size: 24px;
+        color: #81c784;
+        min-width: 30px;
+        text-align: center;
+      }
+
+      .perfil-campo .label {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      .perfil-campo .valor {
+        font-size: 16px;
+        color: white;
+        font-weight: 600;
+      }
+
+      .perfil-campo .info-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .perfil-botoes {
+        display: flex;
+        gap: 12px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+      }
+
+      .perfil-btn {
+        flex: 1;
+        min-width: 120px;
+        padding: 14px 20px;
+        border: none;
+        border-radius: 12px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      .perfil-btn.voltar {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+      }
+
+      .perfil-btn.voltar:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .perfil-btn.sair {
+        background: linear-gradient(135deg, #e53935, #b71c1c);
+        color: white;
+        box-shadow: 0 4px 12px rgba(229, 57, 53, 0.3);
+      }
+
+      .perfil-btn.sair:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(229, 57, 53, 0.4);
+      }
+
+      .perfil-btn.sair:active {
+        transform: translateY(0);
+      }
+
+      .perfil-titulo {
+        text-align: center;
+        margin-bottom: 20px;
+        color: white;
+        font-size: 26px;
+        border: none !important;
+      }
+
+      .perfil-sub {
+        text-align: center;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 14px;
+        margin-bottom: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container perfil-container">
+      <div class="perfil-avatar" id="perfilAvatar">N</div>
+
+      <h2 class="perfil-titulo">Meu Perfil</h2>
+      <p class="perfil-sub">Dados da sua conta</p>
+
+      <div class="perfil-campo">
+        <i class="bx bxs-user"></i>
+        <div class="info-wrapper">
+          <span class="label">Nome</span>
+          <span class="valor" id="perfilNome">-</span>
+        </div>
+      </div>
+
+      <div class="perfil-campo">
+        <i class="bx bxs-user-account"></i>
+        <div class="info-wrapper">
+          <span class="label">Usuário</span>
+          <span class="valor" id="perfilUsuario">-</span>
+        </div>
+      </div>
+
+      <div class="perfil-campo">
+        <i class="bx bxs-envelope"></i>
+        <div class="info-wrapper">
+          <span class="label">Email</span>
+          <span class="valor" id="perfilEmail">-</span>
+        </div>
+      </div>
+
+      <div class="perfil-campo">
+        <i class="bx bxs-id-card"></i>
+        <div class="info-wrapper">
+          <span class="label">Tipo de conta</span>
+          <span class="valor">Login com cadastro</span>
+        </div>
+      </div>
+
+      <div class="perfil-botoes">
+        <a href="index.html" class="perfil-btn voltar">Voltar</a>
+        <button class="perfil-btn sair" id="btnSair">Sair da conta</button>
+      </div>
+    </div>
+
+    <script>
+      // Carrega dados do usuário
+      const tokenUsuario = localStorage.getItem("wikiUsuario") || sessionStorage.getItem("wikiUsuario");
+      const nomeUsuario = localStorage.getItem("wikiUsuarioNome") || sessionStorage.getItem("wikiUsuarioNome");
+
+      if (!tokenUsuario) {
+        // Não está logado, manda pro login
+        window.location.href = "https://1Nata1.github.io/Login/";
+      }
+
+      // Preenche nome e usuário
+      if (nomeUsuario) {
+        document.getElementById("perfilNome").textContent = nomeUsuario;
+      }
+      document.getElementById("perfilUsuario").textContent = tokenUsuario;
+
+      // Inicial do nome pro avatar
+      if (nomeUsuario) {
+        document.getElementById("perfilAvatar").textContent = nomeUsuario.charAt(0).toUpperCase();
+      } else {
+        document.getElementById("perfilAvatar").textContent = tokenUsuario.charAt(0).toUpperCase();
+      }
+
+      // Busca o email dos dados salvos no localStorage
+      try {
+        const usuarios = JSON.parse(localStorage.getItem("wikiUsuarios") || "[]");
+        const usuarioEncontrado = usuarios.find(u => u.username === tokenUsuario);
+        if (usuarioEncontrado) {
+          document.getElementById("perfilEmail").textContent = usuarioEncontrado.email;
+        } else {
+          document.getElementById("perfilEmail").textContent = "Email não disponível";
+        }
+      } catch (e) {
+        document.getElementById("perfilEmail").textContent = "Erro ao carregar";
+      }
+
+      // Botão sair
+      document.getElementById("btnSair").addEventListener("click", function () {
+        localStorage.removeItem("wikiLogado");
+        localStorage.removeItem("wikiUsuario");
+        localStorage.removeItem("wikiUsuarioNome");
+        sessionStorage.removeItem("wikiLogado");
+        sessionStorage.removeItem("wikiUsuario");
+        sessionStorage.removeItem("wikiUsuarioNome");
+        window.location.href = "https://1Nata1.github.io/Login/";
+      });
+    </script>
+  </body>
+</html>
