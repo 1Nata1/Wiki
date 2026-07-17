@@ -67,6 +67,12 @@ body::before {
   align-items: center;
 }
 
+.header-btns {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
 .header-top h1 {
   margin: 0;
   padding: 0;

@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Style.css?v=2" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="index.js?v=2" defer></script>
+    <title>WendyJr_ - Wiki da Comunidade</title>
+    <script>
+      const logado = localStorage.getItem("wikiLogado") || sessionStorage.getItem("wikiLogado");
+      if (!logado) {
+        window.location.href = "https://1Nata1.github.io/Login/";
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header-bar">
+        <div class="header-top">
+          <h1><b>WendyJr_</b></h1>
+          <div class="header-btns">
+            <a href="index.html" class="user-btn" title="Início" style="font-size:12px;padding:6px 12px;">
+              <i class="bx bxs-home" style="font-size:18px;"></i>
+            </a>
+            <a href="perfil.html" class="user-btn" title="Meu Perfil">
+              <i class="bx bxs-user-circle"></i>
+              <span class="user-name" id="headerUserName"></span>
+              <i class="bx bxs-shield mod-btn-icon" id="modIcon" style="display:none;" title="Moderação"></i>
+            </a>
+          </div>
+        </div>
+        <ul>
+          <li><a href="#Canal">Canal</a></li>
+          <li><a href="#Feitos">Feitos</a></li>
+          <li><a href="#Curiosidades">Curiosidades</a></li>
+          <li><a href="#Galeria">Galeria</a></li>
+          <li><a href="#Comentarios">Comentários</a></li>
+        </ul>
+      </div>
+
+      <div class="Principal">
+        <p>
+          Amanda Japiassú mais conhecida como Wendyjr_ ou caloteira tem 20 anos
+          de idade atualmente em 2025, Streamer e Youtuber principalmente de
+          Stardew Valley e Speedruner de varios jogos entre eles: Hollow Knight,
+          Undertale, Stardew Valley, PvZ, Club Penguin, Pou, Etc. <br />
+          Nasceu no Rio de Janeiro no dia 26/12/2004. Começou seu canal do
+          youtube no dia 08/06/2021, e da twitch no dia 08/05/2020
+        </p>
+        <div id="Amanda"></div>
+      </div>
+
+      <div class="social">
+        <a href="https://www.instagram.com/amandajapiassub/" target="_blank">
+          <img src="Imagens/instagram.png" alt="Instagram" />
+        </a>
+        <a href="https://www.youtube.com/@WendyJr_" target="_blank">
+          <img src="Imagens/youtube.png" alt="Youtube" />
+        </a>
+        <a href="https://www.twitch.tv/wendyjr_" target="_blank">
+          <img src="Imagens/Twitch.png" alt="Twitch" />
+        </a>
+        <a href="https://x.com/WendyJr_" target="_blank">
+          <img src="Imagens/twitter.png" alt="Twitter" />
+        </a>
+      </div>
+
+      <div class="texto">
+        <h2 id="Canal">Canal do YouTube</h2>
+        <p>
+          WendyJr_ conta com mais de <b>483 mil inscritos</b> no YouTube. Publica
+          vídeos <b>todo sábado às 11h</b> e faz <b>lives na Twitch todos os dias às 18:30</b>.
+        </p>
+
+        <h3>Playlists do canal</h3>
+        <ul>
+          <li><b>Speedruns e Desafios | Stardew Valley</b> — 27 vídeos</li>
+          <li><b>Dicas para Iniciantes | Stardew Valley</b> — 11 vídeos</li>
+          <li><b>100 dias de Stardew Valley Expanded (+120 mods)</b> — 16 vídeos</li>
+          <li><b>Melhores Mods de Stardew Valley</b> — 12 vídeos</li>
+          <li><b>Minecraft</b> — 13 vídeos</li>
+        </ul>
+
+        <h3>Vídeos recentes em destaque</h3>
+        <ul>
+          <li>"Joguei Stardew Valley no Google Tradutor e ficou ASSIM…" — 42K views</li>
+          <li>"Como eu zerei Silksong sem pegar (quase) NADA" — 39K views</li>
+          <li>"Undertale, mas eu tenho uma ARMA…" — 68K views</li>
+          <li>"Esse brasileiro QUASE pegou TOP 1 na Speedrun de Hollow Knight" — 54K views</li>
+          <li>"Hollow Knight, mas a GRAVIDADE MUDA a cada 1 minuto!" — 51K views</li>
+        </ul>
+
+        <h3>Colaborações</h3>
+        <ul>
+          <li><b>Farizaku</b> — "I challenged the best Stardew speedrunner in Brazil" (78K views)</li>
+          <li><b>Gustavo_07</b> — Speedrunner vs Pro Player de Silksong (94K views)</li>
+          <li><b>Dillian</b> — Torneio de Cuphead 1v1 (87K views)</li>
+        </ul>
+
+        <h2 id="Feitos">Feitos</h2>
+
+        <p>
+          <b>Stardew Valley</b>: Conseguiu o Primeiro Lugar na Speedrun de
+          casamento com o
+          <a href="https://www.speedrun.com/pt-BR/stardew_valley/runs/menj14qm">Shane</a>,
+          Segundo Lugar com a
+          <a href="https://www.speedrun.com/pt-BR/stardew_valley/runs/mew6weqm">Abigail</a>,
+          e Terceiro lugar com a
+          <a href="https://www.speedrun.com/pt-BR/stardew_valley/runs/z1lgodrm">Emily</a>.
+          <br />
+          Fez o
+          <a href="https://www.youtube.com/watch?v=tyhOQjtEGqo">centro comunitario sem Ferramentas</a>,
+          participou de um campeonato de
+          <a href="https://youtu.be/XD584BJOOQs?si=AFogGQ_0Em1O9-FD">Stardew Valley</a>,
+          Fez 100 dias no
+          <a href="https://www.youtube.com/watch?v=r5SNQSfEfZk">expanded</a>
+        </p>
+
+        <p>
+          <b>Minecraft</b>: Participou do
+          <a href="https://www.youtube.com/watch?v=lBsUa8ZhzME">MCC</a> (MC Championship Rising 2)
+          pelo time Green Geckos ao lado de Caramello, Calolinda e p_izzato,
+          ficando em 10º lugar geral e 36º individual. Também fundou
+          o Batateismo no minecraft.
+        </p>
+
+        <p>
+          <b>Enigma do medo</b>: Fez varias speedruns desse jogo e conseguiu
+          Primeiro Lugar em derrotar o
+          <a href="https://www.speedrun.com/pt-BR/Enigma_of_Fear/runs/ylp92xnm">Calisto</a>
+        </p>
+
+        <p>
+          <b>Eventos ao vivo</b>: Já tivemos de eventos especiais o Dia dos
+          encalhados, WendyAwards, Festa Junina, Cosplay, Live cozinhando, 1 de
+          abril e subathons
+        </p>
+
+        <p>
+          <b>Rpg de mesa</b>: Criou e mestrou uma campanha inteira de
+          <a href="https://www.youtube.com/playlist?list=PLcRnwsYtkBpyUVTcKABBBLAHlXA9TAyn7">RPG</a>
+        </p>
+
+        <h2 id="Curiosidades">Curiosidades</h2>
+        <ul>
+          <li>Ela namora a pastelitos</li>
+          <li>Seu canal era para ser focado em LadyBug</li>
+          <li>Tem varios videos recitando historias no canal de seu avô</li>
+          <li>Tem duas irmãs</li>
+          <li>Prende seus moderadores em seu porão e odeia seus vips</li>
+          <li>Amava club penguin desde pequena</li>
+          <li>Tem varios canais de diversos conteudos</li>
+          <li>Ela tem todas as alergias</li>
+          <li>Faz pilates com a sua Mâe</li>
+        </ul>
+
+        <h2 id="Galeria">Galeria</h2>
+        <div class="galeria">
+          <figure class="galeria-item">
+            <img src="Imagens/F7.jfif" alt="Foto">
+          </figure>
+          <figure class="galeria-item">
+            <img src="Imagens/F1.webp" alt="Foto">
+          </figure>
+          <figure class="galeria-item">
+            <img src="Imagens/F2.webp" alt="Foto">
+          </figure>
+          <figure class="galeria-item">
+            <img src="Imagens/F3.webp" alt="Foto">
+          </figure>
+          <figure class="galeria-item">
+            <img src="Imagens/F4.webp" alt="Foto">
+          </figure>
+          <figure class="galeria-item">
+            <img src="Imagens/F5.webp" alt="Foto">
+          </figure>
+          <figure class="galeria-item">
+            <img src="Imagens/F8.webp" alt="Foto">
+          </figure>
+          <figure class="galeria-item">
+            <img src="Imagens/F9.webp" alt="Foto">
+          </figure>
+        </div>
+      </div>
+
+      <!-- === COMENTÁRIOS === -->
+      <div class="comentarios-section" id="Comentarios">
+        <h2>Comentários</h2>
+        <div class="comentarios-form" id="comentarioFormArea">
+          <textarea id="comentarioInput" placeholder="Digite seu comentário..." rows="3"></textarea>
+          <button class="LoginBtn" id="btnComentar" style="height:44px;font-size:15px;margin-top:8px;" onclick="enviarComentario()">Comentar</button>
+        </div>
+        <div class="comentarios-form" id="comentarioMensagem" style="display:none;">
+          <p style="color:rgba(255,255,255,0.7);">Faça <a href="https://1Nata1.github.io/Login/" style="color:#81c784;">login</a> para comentar.</p>
+        </div>
+        <div class="comentarios-lista" id="comentariosLista"></div>
+      </div>
+      <!-- === FIM COMENTÁRIOS === -->
+
+    </div>
+
+    <div id="lightbox" class="lightbox-overlay">
+      <span class="lightbox-close">&times;</span>
+      <img id="lightbox-imagem" class="lightbox-content" alt="imagem em tela cheia">
+    </div>
+
+    <script>
+      const userName = localStorage.getItem("wikiUsuarioNome") || sessionStorage.getItem("wikiUsuarioNome") || localStorage.getItem("wikiUsuario") || sessionStorage.getItem("wikiUsuario");
+      const nameSpan = document.getElementById("headerUserName");
+      if (nameSpan && userName) nameSpan.textContent = userName;
+
+      // ========== SISTEMA DE COMENTÁRIOS ==========
+      const COMENTARIOS_KEY = "wikiComentarios";
+      const MODERADORES_KEY = "wikiModeradores";
+
+      function getComentarios() {
+        try { return JSON.parse(localStorage.getItem(COMENTARIOS_KEY) || "[]"); }
+        catch(e) { return []; }
+      }
+
+      function getModeradores() {
+        try { return JSON.parse(localStorage.getItem(MODERADORES_KEY) || '["Nata"]'); }
+        catch(e) { return ["Nata"]; }
+      }
+
+      function salvarComentarios(lista) {
+        localStorage.setItem(COMENTARIOS_KEY, JSON.stringify(lista));
+      }
+
+      function getUsuarioLogado() {
+        return localStorage.getItem("wikiUsuario") || sessionStorage.getItem("wikiUsuario");
+      }
+
+      function getUsuarioNome() {
+        return localStorage.getItem("wikiUsuarioNome") || sessionStorage.getItem("wikiUsuarioNome") || getUsuarioLogado();
+      }
+
+      function isModerador(username) {
+        return getModeradores().includes(username);
+      }
+
+      function formatarData(ts) {
+        return new Date(ts).toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", year: "2-digit", hour: "2-digit", minute: "2-digit" });
+      }
+
+      function renderizarComentarios() {
+        const lista = document.getElementById("comentariosLista");
+        const user = getUsuarioLogado();
+        const comentarios = getComentarios();
+        const mostrarPendentes = isModerador(user);
+
+        if (comentarios.length === 0) {
+          lista.innerHTML = '<p style="color:rgba(255,255,255,0.4);text-align:center;padding:20px 0;">Nenhum comentário ainda. Seja o primeiro!</p>';
+          return;
+        }
+
+        const visiveis = mostrarPendentes ? comentarios : comentarios.filter(c => c.status !== "pendente");
+
+        if (visiveis.length === 0) {
+          lista.innerHTML = '<p style="color:rgba(255,255,255,0.4);text-align:center;padding:20px 0;">Nenhum comentário aprovado ainda.</p>';
+          return;
+        }
+
+        let html = "";
+        for (const c of visiveis) {
+          const isOwner = user && user === c.usuario;
+          const podeAprovar = mostrarPendentes && c.status === "pendente";
+          const podeExcluir = mostrarPendentes || isOwner;
+
+          let badges = "";
+          if (isModerador(c.usuario)) badges += ' <span class="mod-badge">Mod</span>';
+          if (c.status === "pendente") badges += ' <span class="pendente-badge">Pendente</span>';
+
+          html += `<div class="comentario-item ${c.status === "pendente" ? "comentario-pendente" : ""}">
+            <div class="comentario-header">
+              <span class="comentario-autor">${c.autorNome}${badges}</span>
+              <span class="comentario-data">${formatarData(c.data)}</span>
+            </div>
+            <div class="comentario-texto">${c.texto.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</div>
+            <div class="comentario-acoes">`;
+
+          if (podeAprovar) html += `<button class="comentario-btn aprovar" onclick="aprovarComentario(${c.id})">✓ Aprovar</button>`;
+          if (podeExcluir) html += `<button class="comentario-btn excluir" onclick="excluirComentario(${c.id})">✗ Excluir</button>`;
+
+          html += `</div></div>`;
+        }
+        lista.innerHTML = html;
+      }
+
+      function enviarComentario() {
+        const user = getUsuarioLogado();
+        if (!user) { alert("Você precisa estar logado para comentar!"); return; }
+
+        const input = document.getElementById("comentarioInput");
+        const texto = input.value.trim();
+        if (!texto) { alert("Digite um comentário!"); return; }
+
+        const comentarios = getComentarios();
+        const novo = {
+          id: Date.now(), usuario: user, autorNome: getUsuarioNome(), texto, data: Date.now(), status: "pendente"
+        };
+
+        if (isModerador(user)) novo.status = "aprovado";
+
+        comentarios.push(novo);
+        salvarComentarios(comentarios);
+        input.value = "";
+        renderizarComentarios();
+
+        if (novo.status === "pendente") alert("Comentário enviado! Aguarde aprovação de um moderador.");
+      }
+
+      function aprovarComentario(id) {
+        if (!isModerador(getUsuarioLogado())) { alert("Só moderadores podem aprovar."); return; }
+        const comentarios = getComentarios();
+        const c = comentarios.find(c => c.id === id);
+        if (c) { c.status = "aprovado"; salvarComentarios(comentarios); renderizarComentarios(); }
+      }
+
+      function excluirComentario(id) {
+        const user = getUsuarioLogado();
+        if (!user) return;
+        let comentarios = getComentarios();
+        const c = comentarios.find(c => c.id === id);
+        if (!c) return;
+        if (c.usuario !== user && !isModerador(user)) { alert("Você não pode excluir este comentário."); return; }
+        if (!confirm("Excluir este comentário?")) return;
+        comentarios = comentarios.filter(c => c.id !== id);
+        salvarComentarios(comentarios);
+        renderizarComentarios();
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const user = getUsuarioLogado();
+        if (user) {
+          document.getElementById("comentarioFormArea").style.display = "block";
+          document.getElementById("comentarioMensagem").style.display = "none";
+        } else {
+          document.getElementById("comentarioFormArea").style.display = "none";
+          document.getElementById("comentarioMensagem").style.display = "block";
+        }
+        renderizarComentarios();
+
+        const modIcon = document.getElementById("modIcon");
+        if (modIcon && user && isModerador(user)) {
+          modIcon.style.display = "inline";
+          modIcon.addEventListener("click", (e) => { e.preventDefault(); window.location.href = "moderacao.html"; });
+        }
+      });
+    </script>
+  </body>
+</html>
