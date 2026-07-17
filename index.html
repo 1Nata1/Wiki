@@ -15,7 +15,6 @@
     <script src="index.js?v=2" defer></script>
     <title>Wiki - WendyJr_</title>
     <script>
-      // Verifica se está logado
       const logado = localStorage.getItem("wikiLogado") || sessionStorage.getItem("wikiLogado");
       if (!logado) {
         window.location.href = "https://1Nata1.github.io/Login/";
@@ -24,20 +23,21 @@
   </head>
   <body>
     <div class="container">
-    <div class="header-bar">
-      <div class="header-top">
-        <h1><b>WendyJr_</b></h1>
-        <a href="perfil.html" class="user-btn" title="Meu Perfil">
-          <i class="bx bxs-user-circle"></i>
-          <span class="user-name" id="headerUserName"></span>
-        </a>
-      </div>
-      <ul>
-        <li><a href="#Feitos">Feitos</a></li>
-        <li><a href="#Curiosidades">Curiosidades</a></li>
-        <li><a href="#Galeria">Galeria</a></li>
-      </ul>
-    </div>
+      <div class="header-bar">
+        <div class="header-top">
+          <h1><b>WendyJr_</b></h1>
+          <a href="perfil.html" class="user-btn" title="Meu Perfil">
+            <i class="bx bxs-user-circle"></i>
+            <span class="user-name" id="headerUserName"></span>
+          </a>
+        </div>
+        <ul>
+          <li><a href="#Canal">Canal</a></li>
+          <li><a href="#Feitos">Feitos</a></li>
+          <li><a href="#Curiosidades">Curiosidades</a></li>
+          <li><a href="#Galeria">Galeria</a></li>
+        </ul>
+        </div>
 
       <div class="Principal">
         <p>
@@ -67,6 +67,37 @@
       </div>
 
       <div class="texto">
+        <h2 id="Canal">Canal do YouTube</h2>
+        <p>
+          WendyJr_ conta com mais de <b>483 mil inscritos</b> no YouTube. Publica
+          vídeos <b>todo sábado às 11h</b> e faz <b>lives na Twitch todos os dias às 18:30</b>.
+        </p>
+
+        <h3>Playlists do canal</h3>
+        <ul>
+          <li><b>Speedruns e Desafios | Stardew Valley</b> — 27 vídeos</li>
+          <li><b>Dicas para Iniciantes | Stardew Valley</b> — 11 vídeos</li>
+          <li><b>100 dias de Stardew Valley Expanded (+120 mods)</b> — 16 vídeos</li>
+          <li><b>Melhores Mods de Stardew Valley</b> — 12 vídeos</li>
+          <li><b>Minecraft</b> — 13 vídeos</li>
+        </ul>
+
+        <h3>Vídeos recentes em destaque</h3>
+        <ul>
+          <li>"I Ran Stardew Valley Through Google Translate and This Happened..." — 42K views</li>
+          <li>"How I beat Silksong without picking up (almost) ANYTHING" — 39K views</li>
+          <li>"Undertale, but I have a GUN…" — 68K views</li>
+          <li>"This Brazilian ALMOST took TOP 1 in a Hollow Knight Speedrun" — 54K views</li>
+          <li>"Hollow Knight, but GRAVITY CHANGES every 1 minute!" — 51K views</li>
+        </ul>
+
+        <h3>Colaborações</h3>
+        <ul>
+          <li><b>Farizaku</b> — "I challenged the best Stardew speedrunner in Brazil" (78K views)</li>
+          <li><b>Gustavo_07</b> — Speedrunner vs Pro Player de Silksong (94K views)</li>
+          <li><b>Dillian</b> — Torneio de Cuphead 1v1 (87K views)</li>
+        </ul>
+
         <h2 id="Feitos">Feitos</h2>
 
         <p>
@@ -88,8 +119,10 @@
 
         <p>
           <b>Minecraft</b>: Participou do
-          <a href="https://www.youtube.com/watch?v=lBsUa8ZhzME">MCC</a>, fundou
-          o Batateismo no minecraft
+          <a href="https://www.youtube.com/watch?v=lBsUa8ZhzME">MCC</a> (MC Championship Rising 2)
+          pelo time Green Geckos ao lado de Caramello, Calolinda e p_izzato,
+          ficando em 10º lugar geral e 36º individual. Também fundou
+          o Batateismo no minecraft.
         </p>
 
         <p>
@@ -150,20 +183,19 @@
           </figure>
         </div>
       </div>
-      </div>
+    </div>
 
-      <div id="lightbox" class="lightbox-overlay">
+    <div id="lightbox" class="lightbox-overlay">
       <span class="lightbox-close">&times;</span>
       <img id="lightbox-imagem" class="lightbox-content" alt="imagem em tela cheia">
-      </div>
+    </div>
 
-      <script>
-      // Preenche o nome do usuário no cabecalho
+    <script>
       const userName = localStorage.getItem("wikiUsuarioNome") || sessionStorage.getItem("wikiUsuarioNome") || localStorage.getItem("wikiUsuario") || sessionStorage.getItem("wikiUsuario");
       const nameSpan = document.getElementById("headerUserName");
       if (nameSpan && userName) {
         nameSpan.textContent = userName;
       }
-      </script>
-      </body>
-      </html>
+    </script>
+  </body>
+</html>

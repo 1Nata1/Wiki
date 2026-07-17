@@ -193,6 +193,14 @@ body::before {
   margin-top: 8px;
 }
 
+.container h3 {
+  color: #a5d6a7;
+  font-size: 20px;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  padding-left: 2px;
+}
+
 .Principal {
   display: flex;
   align-items: flex-start;
