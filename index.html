@@ -9,7 +9,14 @@
       rel="stylesheet"
     />
     <script src="index.js" defer></script>
-    <title>Wiki</title>
+    <title>Wiki - WendyJr_</title>
+    <script>
+      // Verifica se está logado (vindo do Login)
+      const logado = localStorage.getItem("wikiLogado") || sessionStorage.getItem("wikiLogado");
+      if (!logado) {
+        window.location.href = "https://1nata1.github.io/Login/";
+      }
+    </script>
   </head>
   <body>
     <div class="container">
