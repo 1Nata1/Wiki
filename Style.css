@@ -4,17 +4,40 @@
   box-sizing: border-box;
 }
 
+/* Garante que o fundo cubra a página inteira mesmo com scroll */
+html {
+  min-height: 100%;
+}
+
 body {
   background-image: url(Imagens/stardew-valley-2560-x-1440-background-gkvzx4cplgse4ymy.jpg);
   background-repeat: no-repeat;
-  background-attachment: fixed;
   background-size: cover;
   background-position: center;
+  /* fixed causa problema em mobile quando scrolla - vamos usar uma abordagem melhor */
+  background-attachment: scroll;
   margin: 0;
   padding: 16px;
   font-family: "Crimson Pro", Georgia, "Times New Roman", serif;
   min-height: 100vh;
   min-height: 100dvh;
+  position: relative;
+}
+
+/* Pseudo-elemento pra segurar o fundo em toda a altura */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  background-image: url(Imagens/stardew-valley-2560-x-1440-background-gkvzx4cplgse4ymy.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
 }
 
 html {
@@ -35,6 +58,7 @@ html {
   gap: 20px;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+  position: relative;
 }
 
 .container h1 {
@@ -285,11 +309,7 @@ html {
     font-size: 22px;
   }
 
-  .Principal p {
-    padding: 0;
-    font-size: 16px;
-  }
-
+  .Principal p,
   .texto p,
   .texto li {
     font-size: 16px;
