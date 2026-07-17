@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="Style.css?v=2" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Moderação - Wiki</title>
+    <style>
+      .container.moderacao {
+        max-width: 700px;
+      }
+
+      .mod-header {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .mod-header h2 {
+        border: none !important;
+        padding-top: 0 !important;
+      }
+
+      .mod-sub {
+        color: rgba(255,255,255,0.5);
+        font-size: 14px;
+      }
+
+      .mod-aviso {
+        background: rgba(255, 193, 7, 0.1);
+        border: 1px solid rgba(255, 193, 7, 0.3);
+        border-radius: 10px;
+        padding: 16px;
+        text-align: center;
+        color: #ffd54f;
+        margin: 16px 0;
+      }
+
+      .mod-acoes {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+
+      .mod-input-area {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin: 12px 0;
+      }
+
+      .mod-input-area input {
+        flex: 1;
+        min-width: 150px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 2px solid rgba(76, 175, 80, 0.4);
+        border-radius: 10px;
+        outline: none;
+        font-size: 15px;
+        color: white;
+        padding: 10px 16px;
+      }
+
+      .mod-input-area input:focus {
+        border-color: #4caf50;
+      }
+
+      .mod-lista {
+        margin-top: 12px;
+      }
+
+      .mod-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255,255,255,0.06);
+        border-radius: 10px;
+        padding: 10px 14px;
+        margin-bottom: 6px;
+      }
+
+      .mod-item .mod-nome {
+        color: white;
+        font-weight: 600;
+        font-size: 15px;
+      }
+
+      .mod-item .mod-remove {
+        background: rgba(229, 57, 53, 0.3);
+        color: #ef9a9a;
+        border: none;
+        border-radius: 8px;
+        padding: 4px 12px;
+        font-size: 13px;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+
+      .mod-item .mod-remove:hover {
+        background: rgba(229, 57, 53, 0.5);
+      }
+
+      .mod-item .badge-dono {
+        background: #ffc107;
+        color: #333;
+        font-size: 11px;
+        padding: 2px 8px;
+        border-radius: 10px;
+        margin-left: 8px;
+      }
+
+      .status-ok {
+        color: #81c784;
+        font-size: 14px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container moderacao">
+      <div class="mod-header">
+        <h2>🛡️ Moderação</h2>
+        <p class="mod-sub" id="modStatus">Carregando...</p>
+      </div>
+
+      <div id="modConteudo"></div>
+    </div>
+
+    <script>
+      const MOD_KEY = "wikiModeradores";
+      const COMENT_KEY = "wikiComentarios";
+
+      function getMods() {
+        try { return JSON.parse(localStorage.getItem(MOD_KEY) || '["Nata"]'); }
+        catch(e) { return ["Nata"]; }
+      }
+
+      function salvarMods(lista) {
+        localStorage.setItem(MOD_KEY, JSON.stringify(lista));
+      }
+
+      function getComentarios() {
+        try { return JSON.parse(localStorage.getItem(COMENT_KEY) || "[]"); }
+        catch(e) { return []; }
+      }
+
+      function getUsuario() {
+        return localStorage.getItem("wikiUsuario") || sessionStorage.getItem("wikiUsuario");
+      }
+
+      const user = getUsuario();
+      const mods = getMods();
+      const isMod = mods.includes(user);
+
+      if (!user) {
+        document.getElementById("modStatus").textContent = "Você precisa estar logado.";
+        document.getElementById("modConteudo").innerHTML = '<p style="text-align:center;color:rgba(255,255,255,0.5);padding:30px 0;"><a href="https://1Nata1.github.io/Login/" style="color:#81c784;">Fazer login</a></p>';
+      } else if (!isMod) {
+        document.getElementById("modStatus").textContent = "Acesso restrito a moderadores.";
+        document.getElementById("modConteudo").innerHTML = '<div class="mod-aviso">⛔ Você não é moderador.</div>';
+      } else {
+        document.getElementById("modStatus").textContent = "Bem-vindo, moderador!";
+
+        const ehDono = user === "Nata";
+        let html = "";
+
+        // Se for o dono (Nata), pode gerenciar moderadores
+        if (ehDono) {
+          html += `<h3 style="color:#a5d6a7;font-size:18px;margin-top:10px;">Gerenciar Moderadores</h3>
+            <div class="mod-input-area">
+              <input id="novoModInput" placeholder="Nome do usuário..." />
+              <button class="LoginBtn" style="height:42px;font-size:14px;width:auto;padding:0 20px;" onclick="adicionarMod()">Adicionar</button>
+            </div>
+            <div id="listaMods" class="mod-lista"></div>`;
+        }
+
+        // Aprovar/rejeitar comentários
+        html += `<h3 style="color:#a5d6a7;font-size:18px;margin-top:20px;">Comentários Pendentes</h3>
+          <div id="comentariosPendentes"></div>
+          <div style="text-align:center;margin-top:20px;">
+            <a href="index.html#Comentarios" style="color:#81c784;font-size:14px;">← Voltar para a Wiki</a>
+          </div>`;
+
+        document.getElementById("modConteudo").innerHTML = html;
+
+        if (ehDono) renderizarMods();
+        renderizarPendentes();
+      }
+
+      function renderizarMods() {
+        const mods = getMods();
+        let html = "";
+        for (const m of mods) {
+          const ehDono = m === "Nata";
+          html += `<div class="mod-item">
+            <span class="mod-nome">${m}${ehDono ? '<span class="badge-dono">Dono</span>' : ''}</span>
+            ${!ehDono ? `<button class="mod-remove" onclick="removerMod('${m}')">Remover</button>` : ''}
+          </div>`;
+        }
+        document.getElementById("listaMods").innerHTML = html;
+      }
+
+      function renderizarPendentes() {
+        const comentarios = getComentarios();
+        const pendentes = comentarios.filter(c => c.status === "pendente");
+
+        if (pendentes.length === 0) {
+          document.getElementById("comentariosPendentes").innerHTML = '<p style="color:rgba(255,255,255,0.4);text-align:center;padding:20px;">Nenhum comentário pendente.</p>';
+          return;
+        }
+
+        let html = "";
+        for (const c of pendentes) {
+          html += `<div class="comentario-item comentario-pendente">
+            <div class="comentario-header">
+              <span class="comentario-autor">${c.autorNome}</span>
+              <span class="comentario-data">${new Date(c.data).toLocaleString("pt-BR")}</span>
+            </div>
+            <div class="comentario-texto">${c.texto.replace(/</g,"&lt;")}</div>
+            <div class="comentario-acoes">
+              <button class="comentario-btn aprovar" onclick="aprovar(${c.id})">✓ Aprovar</button>
+              <button class="comentario-btn excluir" onclick="excluir(${c.id})">✗ Excluir</button>
+            </div>
+          </div>`;
+        }
+        document.getElementById("comentariosPendentes").innerHTML = html;
+      }
+
+      function adicionarMod() {
+        const input = document.getElementById("novoModInput");
+        const nome = input.value.trim();
+        if (!nome) { alert("Digite um nome de usuário!"); return; }
+
+        let mods = getMods();
+        if (mods.includes(nome)) { alert("Esse usuário já é moderador!"); return; }
+        mods.push(nome);
+        salvarMods(mods);
+        input.value = "";
+        renderizarMods();
+        alert(`${nome} agora é moderador!`);
+      }
+
+      function removerMod(nome) {
+        if (!confirm(`Remover ${nome} dos moderadores?`)) return;
+        let mods = getMods().filter(m => m !== nome);
+        salvarMods(mods);
+        renderizarMods();
+      }
+
+      function aprovar(id) {
+        let comentarios = getComentarios();
+        const c = comentarios.find(c => c.id === id);
+        if (c) { c.status = "aprovado"; localStorage.setItem(COMENT_KEY, JSON.stringify(comentarios)); }
+        renderizarPendentes();
+      }
+
+      function excluir(id) {
+        if (!confirm("Excluir comentário?")) return;
+        let comentarios = getComentarios().filter(c => c.id !== id);
+        localStorage.setItem(COMENT_KEY, JSON.stringify(comentarios));
+        renderizarPendentes();
+      }
+    </script>
+  </body>
+</html>
