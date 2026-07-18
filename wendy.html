@@ -280,6 +280,7 @@
         if (countSpan) {
           const total = mostrarPendentes ? comentarios.length : comentarios.filter(c => c.status !== "pendente").length;
           countSpan.textContent = total;
+          countSpan.style.display = total > 0 ? "inline" : "none";
         }
 
         if (comentarios.length === 0) {
