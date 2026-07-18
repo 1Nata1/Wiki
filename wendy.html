@@ -193,14 +193,32 @@
 
       <!-- === COMENTÁRIOS === -->
       <div class="comentarios-section" id="Comentarios">
-        <h2>Comentários</h2>
+        <div class="comentarios-header">
+          <h2>Comentários</h2>
+          <span class="comentarios-count" id="comentariosCount">0</span>
+        </div>
+
         <div class="comentarios-form" id="comentarioFormArea">
-          <textarea id="comentarioInput" placeholder="Digite seu comentário..." rows="3"></textarea>
-          <button class="LoginBtn" id="btnComentar" style="height:44px;font-size:15px;margin-top:8px;" onclick="enviarComentario()">Comentar</button>
+          <div class="comentario-input-wrapper">
+            <div class="comentario-avatar" id="comentarioAvatar">U</div>
+            <textarea id="comentarioInput" placeholder="O que você achou da página?" rows="2"></textarea>
+          </div>
+          <div class="comentario-form-footer">
+            <span class="comentario-char-count" id="charCount">0</span>
+            <button class="comentario-enviar-btn" id="btnComentar" onclick="enviarComentario()">
+              <i class="bx bxs-send"></i>
+              Comentar
+            </button>
+          </div>
         </div>
+
         <div class="comentarios-form" id="comentarioMensagem" style="display:none;">
-          <p style="color:rgba(255,255,255,0.7);">Faça <a href="https://1Nata1.github.io/Login/" style="color:#81c784;">login</a> para comentar.</p>
+          <div class="comentario-login-msg">
+            <i class="bx bxs-lock-alt"></i>
+            <p>Faça <a href="https://1Nata1.github.io/Login/">login</a> para comentar.</p>
+          </div>
         </div>
+
         <div class="comentarios-lista" id="comentariosLista"></div>
       </div>
       <!-- === FIM COMENTÁRIOS === -->
@@ -256,6 +274,13 @@
         const user = getUsuarioLogado();
         const comentarios = getComentarios();
         const mostrarPendentes = isModerador(user);
+
+        // Atualiza contador
+        const countSpan = document.getElementById("comentariosCount");
+        if (countSpan) {
+          const total = mostrarPendentes ? comentarios.length : comentarios.filter(c => c.status !== "pendente").length;
+          countSpan.textContent = total;
+        }
 
         if (comentarios.length === 0) {
           lista.innerHTML = '<p style="color:rgba(255,255,255,0.4);text-align:center;padding:20px 0;">Nenhum comentário ainda. Seja o primeiro!</p>';
@@ -340,6 +365,23 @@
 
       document.addEventListener("DOMContentLoaded", () => {
         const user = getUsuarioLogado();
+        const nome = getUsuarioNome();
+
+        // Avatar com a inicial do usuário
+        const avatar = document.getElementById("comentarioAvatar");
+        if (avatar && nome) {
+          avatar.textContent = nome.charAt(0).toUpperCase();
+        }
+
+        // Contador de caracteres
+        const input = document.getElementById("comentarioInput");
+        const charCount = document.getElementById("charCount");
+        if (input && charCount) {
+          input.addEventListener("input", () => {
+            charCount.textContent = input.value.length;
+          });
+        }
+
         if (user) {
           document.getElementById("comentarioFormArea").style.display = "block";
           document.getElementById("comentarioMensagem").style.display = "none";
